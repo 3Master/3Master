@@ -46,7 +46,7 @@ $(function() {
                     render(m, false);
                 })
             });
-        setTimeout(poll, 0.5)
+        setTimeout(poll, 2)
     }
 });
 
