@@ -1,11 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
+
 <html>
 
-=======
->>>>>>> b74aaf9a1a71aec86d9511a08e44ee37bb4849e8
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
