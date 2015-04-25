@@ -89,7 +89,12 @@ public class HomeController {
     public String login(){
         return "login";
     }
-    
+
+    @RequestMapping(value = "/chat/{toId}", method=RequestMethod.GET)
+        public String chat(){
+            return "chat";
+    }
+
     private void fillTeachers(List<User> users, User current){
         for (User user : users) {
             Teacher teacher = teacherRepository.findByTeacherAndStudent(user, current);
