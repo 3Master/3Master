@@ -15,3 +15,6 @@ spring.jpa.database=MYSQL
 spring.jpa.show-sql=true
 spring.jpa.generate-ddl=true
 spring.jpa.hibernate.ddl-auto=create-drop
+
+
+stomp.port: 61616

@@ -13,14 +13,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 import com.threemaster.filter.MethodFiletr;
+import com.threemaster.websocket.ChartHandler;
 
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
 @EnableScheduling
-public class App extends SpringBootServletInitializer  {
+@EnableWebSocket
+public class App extends SpringBootServletInitializer implements WebSocketConfigurer {
     
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -37,6 +43,12 @@ public class App extends SpringBootServletInitializer  {
         registration.setFilter(new MethodFiletr());
         registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
         return registration;
+    }
+    
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(new ChartHandler(), "/chart")
+            .addInterceptors(new HttpSessionHandshakeInterceptor());
     }
     
 }

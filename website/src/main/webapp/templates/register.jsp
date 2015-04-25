@@ -26,7 +26,7 @@
 
     <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required>
     <input type="email" id="email" name="email" class="form-control" placeholder="电子邮件">
-    <input type="password" id="password" name="email" class="form-control" placeholder="设置您的密码" required>
+    <input type="password" id="password" name="password" class="form-control" placeholder="设置您的密码" required>
 
     <input type="text" name="skill1" class="form-control" placeholder="超能力一" required>
     <input type="text" name="skill2" class="form-control" placeholder="超能力二" required>
