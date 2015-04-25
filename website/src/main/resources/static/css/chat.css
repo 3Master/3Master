@@ -20,10 +20,22 @@
   padding-bottom: 15px;
 }
 
-.comment-list-item .tag a:nth-child(2){
-  margin-left: 7px;
-}
-
 .page-header:nth-child(1){
   margin-top:10px;
+}
+
+.comment-list-item .avatar{
+  padding-right: 15px;
+}
+.comment-list-item.inverse .avatar{
+  padding-left: 15px;
+  padding-right: 0;
+}
+.comment-list-item.inverse .content{
+  text-align: right;
+}
+
+.comment-list-item .body .content{
+  line-height: 47px;
+  font-size: 110%;
 }

@@ -53,20 +53,21 @@ $(function() {
             $form = $this.closest('.msg-form'),
             $text = $form.find('.msg-input'),
             msg   = $text.val();
-
-        $.post('/chat/' + remoteId)
-            .done(function(data) {
-                render(data, true)
-            })
+        $text.val('').focus();
+        render(msg, true);
+        $.post('/chat/' + remoteId, {
+            content: msg
+        });
     });
 
     function render(content, isMine) {
         var avatarUrl = isMine ? localAvatar : remoteAvatar;
+        avatarUrl = avatarUrl || '/img/default-avatar.jpeg';
 
         var avatar = '<div class="avatar"><a><img src="' + avatarUrl + '"></a></div>',
-            body   = '<div class="body"><p>' + content + '</p></div>';
+            body   = '<div class="body"><p class="content">' + content + '</p></div>';
 
-        var str = '<div class="comment-list-item">' +
+        var str = '<div class="comment-list-item inverse">' +
             (isMine ? body + avatar : avatar + body) +
             '</div>';
 
