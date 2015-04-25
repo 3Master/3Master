@@ -6,22 +6,22 @@ body{
   background-color: #eee;
 }
 
-.form-signin {
+.form-register {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
-.form-signin-heading{
+.form-register-heading{
   color: white;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-register .form-register-heading,
+.form-register .checkbox {
   margin-bottom: 10px;
 }
-.form-signin .checkbox {
+.form-register .checkbox {
   font-weight: normal;
 }
-.form-signin .form-control {
+.form-register .form-control {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
@@ -30,14 +30,14 @@ body{
   padding: 10px;
   font-size: 16px;
 }
-.form-signin .form-control:focus {
+.form-register .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+.form-register input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"], .form-signin input[name="skill3"] {
+.form-register input[type="password"], .form-register input[name="skill3"] {
   margin-bottom: 10px;
 }
