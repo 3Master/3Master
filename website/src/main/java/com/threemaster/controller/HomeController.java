@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.common.collect.Lists;
 import com.threemaster.entity.Teacher;
 import com.threemaster.entity.User;
+import com.threemaster.repository.MessageRepository;
 import com.threemaster.repository.TeacherRepository;
 import com.threemaster.repository.UserRepository;
 import com.threemaster.util.HttpUtils;
@@ -30,6 +32,9 @@ public class HomeController {
     
     @Autowired
     private TeacherRepository teacherRepository;
+    
+    @Autowired
+    private MessageRepository messageRepository;
     
     @PostConstruct
     public void init(){
@@ -91,8 +96,13 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/chat/{toId}", method=RequestMethod.GET)
-        public String chat(){
-            return "chat";
+    public String chat(HttpServletRequest request, Model model, @PathVariable Integer toId){
+        User current = HttpUtils.loginRequired(request);
+        model.addAttribute("currentUser", current);
+        User to = userRepository.findOne(toId);
+        model.addAttribute("to", to);
+        model.addAttribute("messages", messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false));
+        return "chat";
     }
 
     private void fillTeachers(List<User> users, User current){

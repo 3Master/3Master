@@ -47,7 +47,7 @@ public class App extends SpringBootServletInitializer implements WebSocketConfig
     
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new ChartHandler(), "/chart")
+        registry.addHandler(new ChartHandler(), "/chat")
             .addInterceptors(new HttpSessionHandshakeInterceptor());
     }
     
