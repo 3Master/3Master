@@ -11,7 +11,7 @@ $(function() {
     var self = this,
         conn = new WebSocket(encodeURI('ws://' + location.host + '/chat'));
 
-    self.connect = function(){
+    self.connect = function() {
         conn.onopen = function() {
             console.log('websocket conn opened');
             self.send(location.href);
@@ -21,35 +21,55 @@ $(function() {
         };
         conn.onclose = function(event) {
             console.log('websocket conn closed:' + event.code);
-            if (event.code !== 1006){
+            if (event.code !== 1006) {
                 console.log('reconnecting...');
                 self.connect();
             }
         };
         conn.onmessage = function(message) {
             console.log(message.data);
-            $msgList.append(message.data)
+            render(message.data, false);
         };
     };
 
     self.send = function(msg) {
-        self.conn && self.conn.send(typeof msg === "string" 
-            ? msg 
+        self.conn && self.conn.send(typeof msg === "string"
+            ? msg
             : JSON.stringify(msg));
     };
 
     self.connect();
 
-    var $msgList = $('.comment-list');
+    var $msgList     = $('.comment-list'),
+        remoteId     = $('input#remote-id').val(),
+        remoteName   = $('input#remote-name').val(),
+        remoteAvatar = $('input#remote-avatar').val(),
+        localId      = $('input#local-id').val(),
+        localName    = $('input#local-name').val(),
+        localAvatar  = $('input#local-avatar').val();
+
     $('.btn-send').click(function() {
         var $this = $(this),
             $form = $this.closest('.msg-form'),
             $text = $form.find('.msg-input'),
             msg   = $text.val();
 
-        $.post('/chat/:userId')
+        $.post('/chat/' + remoteId)
             .done(function(data) {
-                $msgList.append(data)
+                render(data, true)
             })
     });
+
+    function render(content, isMine) {
+        var avatarUrl = isMine ? localAvatar : remoteAvatar;
+
+        var avatar = '<div class="avatar"><a><img src="' + avatarUrl + '"></a></div>',
+            body   = '<div class="body"><p>' + content + '</p></div>';
+
+        var str = '<div class="comment-list-item">' +
+            (isMine ? body + avatar : avatar + body) +
+            '</div>';
+
+        $msgList.append($(str))
+    }
 });
