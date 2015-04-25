@@ -43,24 +43,7 @@
     <div class="comment-list">
       <c:forEach var="user" items="${users}" >
         <div class="comment-list-item">
-          <div class="avatar">
-            <c:choose>
-              <c:when test="not empty user.avatar">
-                <a><img src="${user.avatar}"></a>
-              </c:when>
-              <c:otherwise>
-                <a><img src="/img/default-avatar.jpeg"></a>
-              </c:otherwise>
-            </c:choose>
-          </div>
-          <div class="body">
-            <h5>${user.username}</h5>
-            <p class="info">
-              <span class="label label-info">${user.skill1}</span>
-              <span class="label label-info">${user.skill2}</span>
-              <span class="label label-info">${user.skill3}</span>
-            </p>
-          </div>
+          <jsp:include page="user.jsp" />
           <div class="tag">
             <a class="btn btn-default btn-sm pull-right" data-id="${user.id}" onclick="onRequest()">抱大腿</a>
           </div>

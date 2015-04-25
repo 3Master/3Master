@@ -1,8 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
 <html>
 
+=======
+>>>>>>> b74aaf9a1a71aec86d9511a08e44ee37bb4849e8
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,10 +29,10 @@
     </div>
 
     <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required>
-    <input type="password" id="password" class="form-control" required placeholder="输入您的密码">
+    <input type="password" name="password" id="password" class="form-control" required placeholder="输入您的密码">
 
-    <c:if test="${error!=null}">
-      <div class="alert alert-danger">${error}</div>
+    <c:if test="${ not empty errorMsg }">
+      <div class="alert alert-danger">${errorMsg}</div>
     </c:if>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
