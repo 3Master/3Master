@@ -14,53 +14,30 @@
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/comment.css" rel="stylesheet">
-  <link href="/css/navbar.css" rel="stylesheet">
-  <link href="/css/message.css" rel="stylesheet">
+  <link href="/css/chat.css" rel="stylesheet">
 </head>
 
 <body>
 
-
 <nav class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">三人行</a>
+      <a class="navbar-brand" href="#">< 与 ${user.username} 的聊天</a>
     </div>
-
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/search">搜索</a></li>
-      <li class="active"><a>我的</a></li>
-    </ul>
   </div>
 </nav>
 
 <div class="container-fluid">
 
-  <div class="page-header">
-    <h3>师傅</h3>
-  </div>
-
   <div class="comment-list">
-    <c:forEach var="user" items="${passedTeachers}" >
-      <div class="comment-list-item">
-        <%@include file="user.jsp"%>
-        <div class="tag">
-        <h4 class="pull-right">
-          <a href="/teachers/${user.id}?_method=DELETE">
-            <i class="fa fa-trash-o"></i>
-          </a>
-          <a class="btn-chat" href="/chat/${user.id}">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </h4>
-        </div>
-      </div>
+    <c:forEach var="message" items="${messages}" >
+      <%@include file="chat-message.jsp"%>
     </c:forEach>
     <c:forEach var="user" items="${unpassedTeachers}" >
         <div class="comment-list-item">
         <%@include file="user.jsp"%>
         <div class="tag">
-          <span class="label label-default pull-right">已申请</span>
+          <span class="label label-default pull-right">等待通过</span>
         </div>
         </div>
     </c:forEach>
@@ -106,5 +83,8 @@
 
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/lib/sockjs.min.js"></script>
+<script src="/lib/stomp.min.js"></script>
+<script src="/js/chat.js"></script>
 </body>
 </html>

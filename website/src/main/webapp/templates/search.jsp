@@ -12,7 +12,7 @@
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="/css/comment.css" rel="stylesheet">
-    <link href="/css/search.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
   </head>
 
   <body>
