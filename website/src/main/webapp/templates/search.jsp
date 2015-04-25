@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -26,21 +27,22 @@
 
   <div class="comment-list">
     <div class="comment-list-item">
-      <% for(int i=0; i< users.size(); i++) { %>
+      <c:forEach var="user" items="${users}" >
       <div class="avatar">
-        <a><img src="<% user.avatar %>"></a>
+        <a><img src="${user.avatar}"></a>
       </div>
       <div class="body">
-        <h3><% user.nickname %>
-          <a class="btn btn-default btn-sm pull-right" data-id="<% user.id %>" onclick="onRequest()">抱大腿</a>
+        <h3>
+          ${user.nickname}
+          <a class="btn btn-default btn-sm pull-right" data-id="${user.id}" onclick="onRequest()">抱大腿</a>
         </h3>
         <p class="info">
-          <% for(int i=0; i < user.skills.size(); i++){ %>
-          <span class="label label-info"><% user.skills[i] %></span>
-          <% } %>
+          <span class="label label-info">${user.skill1}</span>
+          <span class="label label-info">${user.skill2}</span>
+          <span class="label label-info">${user.skill3}</span>
         </p>
       </div>
-      <% } %>
+      </c:forEach>
     </div>
   </div>
 </div>

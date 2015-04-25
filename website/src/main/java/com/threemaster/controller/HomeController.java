@@ -1,12 +1,23 @@
 package com.threemaster.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.threemaster.entity.User;
+import com.threemaster.repository.UserRepository;
 
 @Controller
 public class HomeController {
+    
+    @Autowired
+    private UserRepository userRepository;
 
 
     @RequestMapping(value = "", method=RequestMethod.GET)
@@ -25,7 +36,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/search", method=RequestMethod.GET)
-    public String search(){
+    public String search(@PageableDefault(value = 15, sort = { "createdTime" }, direction = Sort.Direction.DESC) Pageable pageable,
+            Model model){
+        Page<User> userPage = userRepository.findAll(pageable);
+        model.addAttribute("users", userPage.getContent());
         return "search";
     }
 
