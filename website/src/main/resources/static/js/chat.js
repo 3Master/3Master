@@ -30,7 +30,9 @@ $(function() {
         var avatar = '<div class="avatar"><a><img src="' + avatarUrl + '"></a></div>',
             body   = '<div class="body"><p class="content">' + content + '</p></div>';
 
-        var str = '<div class="comment-list-item inverse">' +
+        var str = '<div class="comment-list-item' +
+            (isMine ? ' inverse' : '')
+            +'">' +
             (isMine ? body + avatar : avatar + body) +
             '</div>';
 
