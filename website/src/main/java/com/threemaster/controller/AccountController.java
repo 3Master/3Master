@@ -33,17 +33,17 @@ public class AccountController {
     
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String login(User user, HttpServletRequest request, Model model){
-        User updatedUser = userRepository.findByUsername(user.getUsername());
-        if(updatedUser == null){
+        User realUser = userRepository.findByUsername(user.getUsername());
+        if(realUser == null){
             model.addAttribute("errorMsg", "用户不存在！");
             return "login";
         }
-        if(!updatedUser.getPassword().equals(user.getPassword())){
+        if(!realUser.getPassword().equals(user.getPassword())){
             model.addAttribute("errorMsg", "密码错误！");
             return "login";
         }
         HttpSession session = request.getSession();
-        session.setAttribute("currentUser", user);
+        session.setAttribute("currentUser", realUser);
         return "redirect:/search";
     }
 }
