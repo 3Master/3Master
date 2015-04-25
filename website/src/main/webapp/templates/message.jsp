@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,16 +8,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>搜索</title>
+  <title>消息</title>
 
   <link rel="icon" href="/img/logo.jpg">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <link href="/css/search.css" rel="stylesheet">
-  <script src="/js/search.js"></script>
+  <link href="/css/message.css" rel="stylesheet">
 </head>
 
 <body>
+
 
 <nav class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
@@ -23,42 +26,36 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="/search">搜索</a></li>
-      <li class=""><a href="/message">消息</a></li>
+      <li class=""><a href="/search">搜索</a></li>
+      <li class="active"><a href="/message">消息</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="container-fluid">
-  <form>
-    <div class="input-group">
-      <input type="text" name="skill" class="form-control" placeholder="输入您想学习的任何技能" required autofocus>
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">搜素</button>
-      </span>
-    </div>
-  </form>
+
+  <div class="page-header">
+    <h2>学生申请</h2>
+  </div>
 
   <div class="comment-list">
     <div class="comment-list-item">
-      <% for(int i=0; i< users.size(); i++) { %>
       <div class="avatar">
         <a><img src="<% user.avatar %>"></a>
       </div>
       <div class="body">
         <h3><% user.nickname %>
-          <a class="btn btn-default btn-sm pull-right" data-id="<% user.id %>" onclick="onRequest()">抱大腿</a>
+          <a class="btn btn-success btn-sm pull-right" href="/accept/<% user.id %>?_method=POST">收徒</a>
         </h3>
-
         <p class="info">
           <% for(int i=0; i < user.skills.size(); i++){ %>
           <span class="label label-info"><% user.skills[i] %></span>
           <% } %>
         </p>
       </div>
-      <% } %>
     </div>
   </div>
+
 </div>
 
 <script src="/lib/jquery.min.js"></script>
