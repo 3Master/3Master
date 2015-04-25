@@ -39,15 +39,14 @@ $(function() {
 
     poll();
 
-    function poll(){
-        setTimeout(function(){
-            $.get('/chat/' + remoteId + '/messages')
-                .done(function(messages){
-                    messages.map(function(m){
-                        render(m, false);
-                    })
+    function poll() {
+        $.get('/chat/' + remoteId + '/messages')
+            .done(function(messages) {
+                messages.map(function(m) {
+                    render(m, false);
                 })
-        }, 0.5)
+            });
+        setTimeout(poll, 2)
     }
 });
 
