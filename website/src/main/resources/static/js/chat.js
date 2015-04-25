@@ -42,6 +42,9 @@ $(function() {
     function poll() {
         $.get('/chat/' + remoteId + '/messages')
             .done(function(messages) {
+                if(!messages || !messages.length) return;
+
+                console.log('msg received:', messages);
                 messages.map(function(m) {
                     render(m, false);
                 });
