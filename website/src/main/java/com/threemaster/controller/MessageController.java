@@ -6,10 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.google.common.collect.Lists;
 import com.threemaster.entity.Message;
@@ -31,7 +28,6 @@ public class MessageController {
     
     @Autowired
     private WebsocketService websocketService;
-    
     @RequestMapping(value="chat/{toId}", method=RequestMethod.POST)
     public void addChat(@PathVariable Integer toId, HttpServletRequest request, String content) throws IOException{
         User current = HttpUtils.loginRequired(request);
@@ -46,6 +42,7 @@ public class MessageController {
     }
     
     @RequestMapping(value="chat/{toId}/messages", method=RequestMethod.GET)
+    @ResponseBody
     public List<String> getMessages(@PathVariable Integer toId, HttpServletRequest request, String content) throws IOException{
         List<String> contents = Lists.newArrayList();
         User current = HttpUtils.loginRequired(request);
