@@ -37,6 +37,10 @@
       <%--<p class="help-block">在这里选择您的头像</p>--%>
     <%--</div>--%>
 
+    <c:if test="${ not empty errorMsg }">
+      <div class="alert alert-danger">${errorMsg}</div>
+    </c:if>
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
     <a class="btn btn-lg btn-default btn-block" href="/login">登录</a>
   </form>
