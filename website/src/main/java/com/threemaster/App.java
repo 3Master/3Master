@@ -1,4 +1,4 @@
-package com.tmy;
+package com.threemaster;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
