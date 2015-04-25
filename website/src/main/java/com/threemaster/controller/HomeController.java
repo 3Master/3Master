@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.common.collect.Lists;
+import com.threemaster.entity.Message;
 import com.threemaster.entity.Teacher;
 import com.threemaster.entity.User;
 import com.threemaster.repository.MessageRepository;
@@ -101,21 +102,25 @@ public class HomeController {
         model.addAttribute("currentUser", current);
         User to = userRepository.findOne(toId);
         model.addAttribute("to", to);
-        model.addAttribute("messages", messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false));
+//        model.addAttribute("messages", messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false));
+        Message message = new Message();
+        message.setContent("test");
+        message.setFromId(1);
+        message.setToId(2);
+        message.setRead(false);
+        messageRepository.save(message);
         return "chat";
     }
 
-    private void fillTeachers(List<User> users, User current){
+    private List<User> fillTeachers(List<User> users, User current){
+        List<User> userLisr = Lists.newArrayList();
         for (User user : users) {
             Teacher teacher = teacherRepository.findByTeacherAndStudent(user, current);
             if(teacher == null){
-                continue;
-            }else if(teacher.isActive()) {
-                user.setTeacher(true);
-            }else  {
-                user.setApply(true);
+                userLisr.add(user);
             }
         }
+        return userLisr;
     }
 
     @RequestMapping(value = "/search", method=RequestMethod.GET)
@@ -129,8 +134,7 @@ public class HomeController {
         }else {
             users = userRepository.findBySkill1OrSkill2OrSkill3(skill, skill, skill, pageable).getContent();
         }
-        fillTeachers(users, current);
-        model.addAttribute("users",users);
+        model.addAttribute("users",fillTeachers(users, current));
         return "search";
     }
     
