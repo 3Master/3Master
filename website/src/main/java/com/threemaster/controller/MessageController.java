@@ -50,7 +50,7 @@ public class MessageController {
         List<Message> messages =  messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false);
         for (Message message : messages) {
             message.setRead(true);
-            contents.add(content);
+            contents.add(message.getContent());
         }
         messageRepository.save(messages);
         return contents;
