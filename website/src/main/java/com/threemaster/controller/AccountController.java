@@ -26,7 +26,7 @@ public class AccountController {
             session.setAttribute("currentUser", user);
             return "redirect:/search";
         } catch (Exception e) {
-            model.addAttribute("error", "用户不存在！");
+            model.addAttribute("errorMsg", "用户已存在！");
             return "register";
         }
     }

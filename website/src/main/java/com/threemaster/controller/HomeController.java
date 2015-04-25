@@ -140,7 +140,7 @@ public class HomeController {
     private List<User> getTeachers(List<Teacher> teachers){
         List<User> users = Lists.newArrayList();
         for (Teacher teacher : teachers) {
-            users.add(teacher.getStudent());
+            users.add(teacher.getTeacher());
         }
         return users;
     }
@@ -148,7 +148,7 @@ public class HomeController {
     private List<User> getStudents(List<Teacher> teachers){
         List<User> users = Lists.newArrayList();
         for (Teacher teacher : teachers) {
-            users.add(teacher.getTeacher());
+            users.add(teacher.getStudent());
         }
         return users;
     }

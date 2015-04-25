@@ -45,6 +45,9 @@ public class TeacherController {
         User current = HttpUtils.loginRequired(request);
         User teacher = userRepository.findOne(teacherId);
         Teacher teacherRelation = teacherRepository.findByTeacherAndStudent(teacher, current);
+        if(teacherRelation == null){
+            return;
+        }
         teacherRepository.delete(teacherRelation);
         return "redirect:/message";
     }
