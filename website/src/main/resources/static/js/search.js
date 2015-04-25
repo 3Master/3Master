@@ -9,7 +9,7 @@ $(function(){
 
         $user.html('<i class="spinner spin"></i> 正在处理');
 
-        $.post( '/request/' + userId)
+        $.post( '/teachers/' + userId)
             .done(function(){
                 $user.removeClass('btn-default');
                 $user.addClass('btn-success');

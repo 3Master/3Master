@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -90,19 +89,33 @@ public class HomeController {
     public String login(){
         return "login";
     }
+    
+    private void fillTeachers(List<User> users, User current){
+        for (User user : users) {
+            Teacher teacher = teacherRepository.findByTeacherAndStudent(user, current);
+            if(teacher == null){
+                continue;
+            }else if(teacher.isActive()) {
+                user.setTeacher(true);
+            }else  {
+                user.setApply(true);
+            }
+        }
+    }
 
     @RequestMapping(value = "/search", method=RequestMethod.GET)
     public String search(HttpServletRequest request, 
             @PageableDefault(value = 15, sort = { "createdTime" }, direction = Sort.Direction.DESC) Pageable pageable,
             Model model, @RequestParam(value="skill", required=false, defaultValue="") String skill){
-        HttpUtils.loginRequired(request);
+        User current = HttpUtils.loginRequired(request);
+        List<User> users = null;
         if(skill.equals("")){
-            Page<User> userPage = userRepository.findAll(pageable);
-            model.addAttribute("users", userPage.getContent());
+            users = userRepository.findAll(pageable).getContent();
         }else {
-            Page<User> userPage = userRepository.findBySkill1OrSkill2OrSkill3(skill, skill, skill, pageable);
-            model.addAttribute("users", userPage.getContent());
+            users = userRepository.findBySkill1OrSkill2OrSkill3(skill, skill, skill, pageable).getContent();
         }
+        fillTeachers(users, current);
+        model.addAttribute("users",users);
         return "search";
     }
     
