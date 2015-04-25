@@ -1,0 +1,57 @@
+.comment-list {
+  background: white;
+  padding: 20px;
+}
+.comment-list .pagination {
+  margin: 0 0 15px;
+}
+.comment-list .pagination > .disabled > a {
+  cursor: text;
+}
+.comment-list-item {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.comment-list-item .avatar {
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 20px;
+}
+.comment-list-item .avatar img {
+  height: 47px;
+  width: 47px;
+}
+.comment-list-item .body {
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+}
+.comment-list-item .body h1,
+.comment-list-item .body h2,
+.comment-list-item .body h3,
+.comment-list-item .body h4,
+.comment-list-item .body h5,
+.comment-list-item .body h6 {
+  padding-top: 0;
+  margin-top: 0;
+}
+.comment-list-item .body .info,
+.comment-list-item .body .info p {
+  margin-bottom: 0;
+}
+.comment-list-item .body .attachment-previews img {
+  vertical-align: text-top;
+  height: 45px;
+}
+.comment-list-item .tag {
+  padding-left: 10px;
+  display: table-cell;
+  vertical-align: top;
+  min-width: 100px;
+}
+.comment-form .editor-wrapper {
+  margin-bottom: 10px;
+}
+.comment-form .file-name {
+  margin-right: 10px;
+}

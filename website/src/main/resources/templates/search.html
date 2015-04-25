@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>搜索</title>
+
+  <link rel="icon" href="/img/logo.jpg">
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="/js/message.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <form>
+    <div class="input-group">
+      <input type="text" name="skill" class="form-control" placeholder="输入您想学习的任何技能" required autofocus>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">搜素</button>
+      </span>
+    </div>
+  </form>
+
+  <div class="comment-list">
+    <div class="comment-list-item">
+      <% for(int i=0; i< users.size(); i++) { %>
+      <div class="avatar">
+        <a><img src="<% user.avatar %>"></a>
+      </div>
+      <div class="body">
+        <h3><% user.nickname %>
+          <a class="btn btn-default btn-sm pull-right" data-id="<% user.id %>" onclick="onRequest()">抱大腿</a>
+        </h3>
+        <p class="info">
+          <% for(int i=0; i < user.skills.size(); i++){ %>
+          <span class="label label-info"><% user.skills[i] %></span>
+          <% } %>
+        </p>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
