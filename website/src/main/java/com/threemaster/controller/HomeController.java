@@ -1,5 +1,7 @@
 package com.threemaster.controller;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,21 @@ public class HomeController {
     
     @Autowired
     private UserRepository userRepository;
+    
+    @PostConstruct
+    public void init(){
+        User user = new User();
+        for(Integer integer = 0; integer < 10; integer ++){
+            user = new User();
+            user.setEmail("test" + integer + "@test.com");
+            user.setPassword(integer + "");
+            user.setSkill1("ae");
+            user.setSkill2("sdag");
+            user.setSkill3("agsd");
+            user.setUsername("aaa" + integer);
+            userRepository.save(user);
+        }
+    }
 
 
     @RequestMapping(value = "", method=RequestMethod.GET)
@@ -43,8 +60,6 @@ public class HomeController {
             Page<User> userPage = userRepository.findAll(pageable);
             model.addAttribute("users", userPage.getContent());
         }else {
-            System.err.println("=========================");
-            System.err.println(skill);
             Page<User> userPage = userRepository.findBySkill1OrSkill2OrSkill3(skill, skill, skill, pageable);
             model.addAttribute("users", userPage.getContent());
         }

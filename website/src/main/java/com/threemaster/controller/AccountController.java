@@ -35,12 +35,12 @@ public class AccountController {
     public String login(User user, HttpServletRequest request, Model model){
         User updatedUser = userRepository.findByUsername(user.getUsername());
         if(updatedUser == null){
-            model.addAttribute("error", "用户不存在！");
-            return "redirect:/search";
+            model.addAttribute("errorMsg", "用户不存在！");
+            return "login";
         }
         if(!updatedUser.getPassword().equals(user.getPassword())){
-            model.addAttribute("error", "用户不存在！");
-            return "redirect:/search";
+            model.addAttribute("errorMsg", "密码错误！");
+            return "login";
         }
         HttpSession session = request.getSession();
         session.setAttribute("currentUser", user);
