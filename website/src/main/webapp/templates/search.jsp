@@ -35,7 +35,7 @@
       <div class="input-group">
         <input type="text" name="skill" class="form-control" placeholder="输入您想学习的任何技能" required>
         <span class="input-group-btn">
-          <button class="btn btn-primary" type="button">搜素</button>
+          <button class="btn btn-primary" type="submit">搜素</button>
         </span>
       </div>
     </form>

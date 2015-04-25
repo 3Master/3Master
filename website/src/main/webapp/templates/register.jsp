@@ -32,10 +32,10 @@
     <input type="text" name="skill2" class="form-control" placeholder="超能力二" required>
     <input type="text" name="skill3" class="form-control" placeholder="超能力三" required>
 
-    <div class="form-group">
-      <input type="file" name="avatar">
-      <p class="help-block">在这里选择您的头像</p>
-    </div>
+    <%--<div class="form-group">--%>
+      <%--<input type="file" name="avatar">--%>
+      <%--<p class="help-block">在这里选择您的头像</p>--%>
+    <%--</div>--%>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
     <a class="btn btn-lg btn-default btn-block" href="/login">登录</a>
