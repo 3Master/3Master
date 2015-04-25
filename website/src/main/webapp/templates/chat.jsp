@@ -35,6 +35,8 @@
     </c:forEach>
   </div>
 
+  <form>
+  </form>
 </div>
 
 <script src="/lib/jquery.min.js"></script>

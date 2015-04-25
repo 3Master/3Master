@@ -9,12 +9,12 @@ $(function() {
         return;
     }
     var self = this,
-        conn = new WebSocket(encodeURI('ws://' + location.host + '/websocket'));
+        conn = new WebSocket(encodeURI('ws://' + location.host + '/chat'));
 
     self.connect = function(){
         conn.onopen = function() {
             console.log('websocket conn opened');
-            send(location.href);
+            self.send(location.href);
         };
         conn.onerror = function() {
             console.error('websocket error');
@@ -26,7 +26,7 @@ $(function() {
                 self.connect();
             }
         };
-        this.conn.onmessage = function(message) {
+        conn.onmessage = function(message) {
             console.log(message.data);
             $msgList.append(message.data)
         };
