@@ -22,7 +22,7 @@
 <nav class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">< 与 ${user.username} 的聊天</a>
+      <a class="navbar-brand" href="#">< 与 ${toUser.username} 的聊天</a>
     </div>
   </div>
 </nav>

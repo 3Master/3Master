@@ -4,14 +4,20 @@
 <div class="comment-list-item">
 
     <c:forEach var="message" items="${messages}" >
-        <c:if test="currentUser.id != message.fromId">
+        <c:if test="${currentUser.id != message.from.id}">
             <c:set var="user" value="message.from"/>
-            <%@include file="user.jsp"%>
+            <%@include file="avatar.jsp"%>
         </c:if>
+
+        <div class="body">
+        <p>${message.body}</p>
+        </div>
+
+        <c:if test="${currentUser.id == message.from.id}">
+            <c:set var="user" value="message.from"/>
+            <%@include file="avatar.jsp"%>
+        </c:if>
+
     </c:forEach>
 
-    <div class="body">
-        <h5>${message.from.username}</h5>
-        <p class="info">${message.body}</p>
-    </div>
 </div>
