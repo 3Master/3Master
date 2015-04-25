@@ -1,12 +1,14 @@
-package com.threemaster.entity;
+package com.threemaster.dto;
 
 import java.util.List;
 
-import javax.persistence.*;
+import org.springframework.beans.BeanUtils;
 
-@Entity
-public class User extends AbstractEntity {
+import com.threemaster.entity.User;
 
+public class UserDto {
+    
+    private Integer id;
     private String username;
     private String password;
     private String email;
@@ -14,14 +16,21 @@ public class User extends AbstractEntity {
     private String skill2;
     private String skill3;
     private String avatar;
-    
-    @ManyToMany
-    @JoinTable(name = "teachers", joinColumns = @JoinColumn(name = "teacherid", referencedColumnName = "id"), uniqueConstraints = @UniqueConstraint(columnNames = {
-            "teacherid", "studentid" }), inverseJoinColumns = @JoinColumn(name = "studentid", referencedColumnName = "id"))
-    private List<User> teachers;
-    
-    @ManyToMany(mappedBy="teachers")
-    private List<User> students;
+    private List<User> teacherList;
+    private List<User> studentList;
+    public UserDto() {
+        super();
+    }
+    public UserDto(User user) {
+        super();
+        BeanUtils.copyProperties(user, this);
+    }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getUsername() {
         return username;
     }
@@ -64,5 +73,17 @@ public class User extends AbstractEntity {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-    
+    public List<User> getTeacherList() {
+        return teacherList;
+    }
+    public void setTeacherList(List<User> teacherList) {
+        this.teacherList = teacherList;
+    }
+    public List<User> getStudentList() {
+        return studentList;
+    }
+    public void setStudentList(List<User> studentList) {
+        this.studentList = studentList;
+    }
+
 }

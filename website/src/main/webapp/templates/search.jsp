@@ -33,7 +33,7 @@
       </div>
       <div class="body">
         <h3>
-          ${user.nickname}
+          ${user.username}
           <a class="btn btn-default btn-sm pull-right" data-id="${user.id}" onclick="onRequest()">抱大腿</a>
         </h3>
         <p class="info">
