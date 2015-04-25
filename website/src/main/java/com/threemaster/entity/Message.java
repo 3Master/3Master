@@ -1,5 +1,6 @@
 package com.threemaster.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
@@ -10,6 +11,7 @@ public class Message extends AbstractEntity {
     private Integer toId;
     @Lob
     private String content;
+    @Column(name="isRead")
     private boolean read;
     public Integer getFromId() {
         return fromId;
