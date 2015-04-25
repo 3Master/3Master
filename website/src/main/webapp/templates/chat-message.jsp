@@ -10,7 +10,7 @@
         </c:if>
 
         <div class="body">
-        <p>${message.body}</p>
+            <p>${message.body}</p>
         </div>
 
         <c:if test="${currentUser.id == message.from.id}">

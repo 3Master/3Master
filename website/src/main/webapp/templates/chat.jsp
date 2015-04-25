@@ -22,8 +22,11 @@
 <nav class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">< 与 ${toUser.username} 的聊天</a>
+      <a class="navbar-brand" href="#">与 ${to.username} 的聊天</a>
     </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/message">返回</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -35,8 +38,22 @@
     </c:forEach>
   </div>
 
-  <form>
+  <form class="form-inline msg-form">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control msg-input" placeholder="在此输入信息……">
+        <div class="input-group-addon btn-send">发送</div>
+      </div>
+    </div>
   </form>
+
+  <input type="hidden" id="remote-id" value="${to.id}">
+  <input type="hidden" id="remote-name" value="${to.username}">
+  <input type="hidden" id="remote-avatar" value="${to.avatar}">
+
+  <input type="hidden" id="local-id" value="${currentUser.id}">
+  <input type="hidden" id="local-name" value="${currentUser.username}">
+  <input type="hidden" id="local-avatar" value="${currentUser.avatar}">
 </div>
 
 <script src="/lib/jquery.min.js"></script>
