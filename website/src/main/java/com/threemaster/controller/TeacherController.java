@@ -46,7 +46,7 @@ public class TeacherController {
         User teacher = userRepository.findOne(teacherId);
         Teacher teacherRelation = teacherRepository.findByTeacherAndStudent(teacher, current);
         if(teacherRelation == null){
-            return;
+            return "redirect:/message";
         }
         teacherRepository.delete(teacherRelation);
         return "redirect:/message";
