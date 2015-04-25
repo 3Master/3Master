@@ -109,6 +109,7 @@ public class HomeController {
         message.setToId(2);
         message.setRead(false);
         messageRepository.save(message);
+        model.addAttribute("messages", Lists.newArrayList(message));
         return "chat";
     }
 
