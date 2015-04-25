@@ -46,12 +46,12 @@
         <%@include file="user.jsp"%>
         <div class="tag">
         <h4 class="pull-right">
-          <a href="/teachers/${user.id}?_method=DELETE">
-            <i class="fa fa-trash-o"></i>
-          </a>
-          <a class="btn-chat" href="/chat/${user.id}">
+            <a class="btn-chat" href="/chat/${user.id}">
             <i class="fa fa-comment-o"></i>
-          </a>
+            </a>
+            <a href="/teachers/${user.id}?_method=DELETE">
+            <i class="fa fa-trash-o"></i>
+            </a>
         </h4>
         </div>
       </div>
@@ -76,11 +76,11 @@
         <%@include file="user.jsp"%>
         <div class="tag">
           <h4 class="pull-right">
-            <a href="/students/${user.id}?_method=DELETE">
-              <i class="fa fa-trash-o"></i>
-            </a>
             <a class="btn-chat" href="/chat/${user.id}">
               <i class="fa fa-comment-o"></i>
+            </a>
+            <a href="/students/${user.id}?_method=DELETE">
+            <i class="fa fa-trash-o"></i>
             </a>
           </h4>
         </div>
