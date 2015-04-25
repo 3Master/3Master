@@ -43,7 +43,7 @@
     <div class="comment-list">
       <c:forEach var="user" items="${users}" >
         <div class="comment-list-item">
-          <jsp:include page="user.jsp" />
+          <%@include file="user.jsp"%>
           <div class="tag">
             <a class="btn btn-default btn-sm pull-right" data-id="${user.id}" onclick="onRequest()">抱大腿</a>
           </div>
