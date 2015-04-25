@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="com.tmy.AppTest" time="0" tests="1" errors="0" skipped="0" failures="0">
+=======
+<testsuite name="com.tmy.AppTest" time="0.002" tests="1" errors="0" skipped="0" failures="0">
+>>>>>>> 4710dac273ba229a15c0f17022eac4e93e06f1f9
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries"/>
@@ -22,7 +26,11 @@
     <property name="java.awt.graphicsenv" value="apple.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
+<<<<<<< HEAD
     <property name="java.io.tmpdir" value="/var/folders/hd/kp_6kb053jd3g_1t9gk55bxm0000gn/T/"/>
+=======
+    <property name="java.io.tmpdir" value="/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/"/>
+>>>>>>> 4710dac273ba229a15c0f17022eac4e93e06f1f9
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="os.name" value="Mac OS X"/>
@@ -39,9 +47,14 @@
     <property name="java.awt.printerjob" value="apple.awt.CPrinterJob"/>
     <property name="java.specification.version" value="1.6"/>
     <property name="file.encoding" value="EUC_CN"/>
+<<<<<<< HEAD
     <property name="user.name" value="harttle"/>
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.2.1/libexec/boot/plexus-classworlds-2.5.1.jar"/>
     <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
+=======
+    <property name="user.name" value="root"/>
+    <property name="java.class.path" value="/opt/local/share/java/maven3/boot/plexus-classworlds-2.5.1.jar"/>
+>>>>>>> 4710dac273ba229a15c0f17022eac4e93e06f1f9
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"/>
@@ -64,5 +77,9 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
+<<<<<<< HEAD
   <testcase name="testApp" classname="com.tmy.AppTest" time="0"/>
+=======
+  <testcase name="testApp" classname="com.tmy.AppTest" time="0.002"/>
+>>>>>>> 4710dac273ba229a15c0f17022eac4e93e06f1f9
 </testsuite>
