@@ -1,6 +1,5 @@
 .comment-list {
   background: white;
-  padding: 20px;
 }
 .comment-list .pagination {
   margin: 0 0 15px;
@@ -15,11 +14,12 @@
 .comment-list-item .avatar {
   display: table-cell;
   vertical-align: top;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .comment-list-item .avatar img {
   height: 47px;
   width: 47px;
+  border-radius: 50%;
 }
 .comment-list-item .body {
   display: table-cell;

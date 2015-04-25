@@ -18,14 +18,24 @@
 <div class="container">
 
   <form class="form-register" method="post" action="/register">
-    <h2 class="form-register-heading">加入“三人行”</h2>
-    <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required autofocus>
+
+    <div class=page-header">
+      <h2 class="form-register-heading">三人行</h2>
+      <p class="desc">三人行，必有<span class="you">你</span>师</p>
+    </div>
+
+    <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required>
     <input type="email" id="email" name="email" class="form-control" placeholder="电子邮件">
     <input type="password" id="password" name="email" class="form-control" placeholder="设置您的密码" required>
 
     <input type="text" name="skill1" class="form-control" placeholder="超能力一" required>
     <input type="text" name="skill2" class="form-control" placeholder="超能力二" required>
     <input type="text" name="skill3" class="form-control" placeholder="超能力三" required>
+
+    <div class="form-group">
+      <input type="file" name="avatar">
+      <p class="help-block">在这里选择您的头像</p>
+    </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
     <a class="btn btn-lg btn-default btn-block" href="/login">登录</a>

@@ -12,7 +12,17 @@ body{
   margin: 0 auto;
 }
 .form-login-heading{
+  text-align: center;
   color: white;
+}
+.desc{
+  color: #aaa;
+  text-align: center;
+  font-size: 18px;
+}
+.desc .you{
+  padding: 0 5px;
+  color: #fff;
 }
 .form-login .form-login-heading,
 .form-login .checkbox {
