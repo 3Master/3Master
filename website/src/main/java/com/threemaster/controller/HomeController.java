@@ -7,16 +7,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-    
+
+
     @RequestMapping(value = "", method=RequestMethod.GET)
     public String home(){
-        return "index";
+        return "redirect:/register";
     }
     
-    @RequestMapping(value = "/test", method=RequestMethod.GET)
-    @ResponseBody
-    public String test(){
-        return "index";
+    @RequestMapping(value = "/register", method=RequestMethod.GET)
+    public String register(){
+        return "register";
     }
 
+    @RequestMapping(value = "/login", method=RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping(value = "/search", method=RequestMethod.GET)
+    public String search(){
+        return "search";
+    }
+
+    @RequestMapping(value = "/message", method=RequestMethod.GET)
+    public String message(){
+        return "message";
+    }
 }
