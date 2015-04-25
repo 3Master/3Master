@@ -44,9 +44,11 @@ $(function() {
             .done(function(messages) {
                 messages.map(function(m) {
                     render(m, false);
-                })
+                });
+            })
+            .always(function(){
+                setTimeout(poll, 2000)
             });
-        setTimeout(poll, 2)
     }
 });
 
