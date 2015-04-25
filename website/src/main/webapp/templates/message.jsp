@@ -27,8 +27,8 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class=""><a href="/search">搜索</a></li>
-      <li class="active"><a>消息</a></li>
+      <li><a href="/search">搜索</a></li>
+      <li class="active"><a>我的</a></li>
     </ul>
   </div>
 </nav>
