@@ -11,11 +11,26 @@
   <link rel="icon" href="/img/logo.jpg">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <script src="/js/message.js"></script>
+  <link href="/css/search.css" rel="stylesheet">
+  <script src="/js/search.js"></script>
 </head>
 
 <body>
-<div class="container">
+
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">三人行</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="/search">搜索</a></li>
+      <li class=""><a href="/message">消息</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
   <form>
     <div class="input-group">
       <input type="text" name="skill" class="form-control" placeholder="输入您想学习的任何技能" required autofocus>
@@ -36,6 +51,7 @@
           ${user.username}
           <a class="btn btn-default btn-sm pull-right" data-id="${user.id}" onclick="onRequest()">抱大腿</a>
         </h3>
+
         <p class="info">
           <span class="label label-info">${user.skill1}</span>
           <span class="label label-info">${user.skill2}</span>

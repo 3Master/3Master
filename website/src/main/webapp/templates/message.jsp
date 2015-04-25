@@ -12,11 +12,27 @@
 
   <link rel="icon" href="/img/logo.jpg">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="/css/message.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="container">
+
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">三人行</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class=""><a href="/search">搜索</a></li>
+      <li class="active"><a href="/message">消息</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
 
   <div class="page-header">
     <h2>学生申请</h2>

@@ -33,11 +33,6 @@ body{
 .form-register .form-control:focus {
   z-index: 2;
 }
-.form-register input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
 .form-register input[type="password"], .form-register input[name="skill3"] {
   margin-bottom: 10px;
 }

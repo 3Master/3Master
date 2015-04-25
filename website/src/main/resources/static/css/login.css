@@ -33,11 +33,9 @@ body{
 .form-login .form-control:focus {
   z-index: 2;
 }
-.form-login input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.form-login input[name="username"] {
+  margin-bottom: 5px;
 }
-.form-login input[type="password"], .form-login input[name="skill3"] {
+.form-login input[type="password"]{
   margin-bottom: 10px;
 }

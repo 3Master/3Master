@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,7 @@
   <link rel="icon" href="/img/logo.jpg">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <link href="/css/register.css" rel="stylesheet">
+  <link href="/css/login.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,13 +22,16 @@
     <h2 class="form-login-heading">三人行</h2>
 
     <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required autofocus>
-    <input type="password" id="password" class="form-control" required placeholder="">
+    <input type="password" id="password" class="form-control" required placeholder="输入您的密码">
+
+    <% error %>
+
     <c:if test="${error!=null}">
       <div class="alert alert-danger">${error}</div>
     </c:if>
 
-    <a href="/">注册</a>
     <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    <a class="btn btn-default btn-sm"></a>
   </form>
 
 </div>
