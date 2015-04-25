@@ -102,14 +102,12 @@ public class HomeController {
         model.addAttribute("currentUser", current);
         User to = userRepository.findOne(toId);
         model.addAttribute("to", to);
-//        model.addAttribute("messages", messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false));
-        Message message = new Message();
-        message.setContent("test");
-        message.setFromId(1);
-        message.setToId(2);
-        message.setRead(false);
-        messageRepository.save(message);
-        model.addAttribute("messages", Lists.newArrayList(message));
+        List<Message> messages =  messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false);
+        for (Message message : messages) {
+            message.setRead(true);
+        }
+        messageRepository.save(messages);
+        model.addAttribute("messages", messages);
         return "chat";
     }
 

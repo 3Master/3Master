@@ -1,6 +1,7 @@
 package com.threemaster.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.collect.Lists;
 import com.threemaster.entity.Message;
 import com.threemaster.entity.User;
 import com.threemaster.repository.MessageRepository;
@@ -41,6 +43,20 @@ public class MessageController {
         message.setRead(false);
         messageRepository.save(message);
         websocketService.send(message);
+    }
+    
+    @RequestMapping(value="chat/{toId}/messages", method=RequestMethod.GET)
+    public List<String> getMessages(@PathVariable Integer toId, HttpServletRequest request, String content) throws IOException{
+        List<String> contents = Lists.newArrayList();
+        User current = HttpUtils.loginRequired(request);
+        User to = userRepository.findOne(toId);
+        List<Message> messages =  messageRepository.findByFromIdAndToIdAndRead(to.getId(), current.getId(), false);
+        for (Message message : messages) {
+            message.setRead(true);
+            contents.add(content);
+        }
+        messageRepository.save(messages);
+        return contents;
     }
 
 }
