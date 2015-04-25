@@ -1,8 +1,8 @@
 package com.threemaster.entity;
 
-import java.util.List;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class User extends AbstractEntity {
@@ -20,14 +20,23 @@ public class User extends AbstractEntity {
     @Column(nullable = false)
     private String skill3;
     private String avatar;
+    @Transient
+    private boolean isApply = false;
+    @Transient 
+    private  boolean isTeacher = false;
     
-    @ManyToMany
-    @JoinTable(name = "teachers", joinColumns = @JoinColumn(name = "teacherid", referencedColumnName = "id"), uniqueConstraints = @UniqueConstraint(columnNames = {
-            "teacherid", "studentid" }), inverseJoinColumns = @JoinColumn(name = "studentid", referencedColumnName = "id"))
-    private List<User> teachers;
-    
-    @ManyToMany(mappedBy="teachers")
-    private List<User> students;
+    public boolean isApply() {
+        return isApply;
+    }
+    public void setApply(boolean isApply) {
+        this.isApply = isApply;
+    }
+    public boolean isTeacher() {
+        return isTeacher;
+    }
+    public void setTeacher(boolean isTeacher) {
+        this.isTeacher = isTeacher;
+    }
     public String getUsername() {
         return username;
     }

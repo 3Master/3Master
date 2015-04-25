@@ -11,5 +11,6 @@ public interface TeacherRepository extends JpaRepository<Teacher, Integer>{
 
     List<Teacher> findByTeacherAndActive(User user, boolean active);
     List<Teacher> findByStudentAndActive(User user, boolean active);
+    Teacher findByTeacherAndStudent(User teacher, User student);
 
 }
