@@ -1,0 +1,29 @@
+
+.navbar-header{
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.navbar-nav.navbar-right{
+  float: right;
+  margin: 0;
+}
+
+.navbar-nav li{
+  display: inline-block;
+  float: left;
+}
+
+.navbar-nav li a{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.comment-list-item .tag a:nth-child(2){
+  margin-left: 7px;
+}
+
+.page-header:nth-child(1){
+  margin-top:10px;
+}

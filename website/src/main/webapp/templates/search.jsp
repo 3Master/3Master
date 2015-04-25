@@ -12,7 +12,7 @@
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="/css/comment.css" rel="stylesheet">
-    <link href="/css/search.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
   </head>
 
   <body>
@@ -33,9 +33,9 @@
   <div class="container-fluid">
     <form>
       <div class="input-group">
-        <input type="text" name="skill" class="form-control" placeholder="输入您想学习的任何技能" required autofocus>
+        <input type="text" name="skill" class="form-control" placeholder="输入您想学习的任何技能" required>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button">搜素</button>
+          <button class="btn btn-primary" type="button">搜素</button>
         </span>
       </div>
     </form>
@@ -45,7 +45,7 @@
         <div class="comment-list-item">
           <%@include file="user.jsp"%>
           <div class="tag">
-            <a class="btn btn-default btn-sm pull-right" data-id="${user.id}" onclick="onRequest()">抱大腿</a>
+            <a class="btn btn-default btn-sm pull-right" data-id="${user.id}">抱大腿</a>
           </div>
         </div>
       </c:forEach>
