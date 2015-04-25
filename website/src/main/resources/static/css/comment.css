@@ -1,12 +1,4 @@
-.comment-list {
-  background: white;
-}
-.comment-list .pagination {
-  margin: 0 0 15px;
-}
-.comment-list .pagination > .disabled > a {
-  cursor: text;
-}
+
 .comment-list-item {
   width: 100%;
   margin-bottom: 15px;
