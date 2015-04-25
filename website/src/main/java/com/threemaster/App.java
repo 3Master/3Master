@@ -1,6 +1,5 @@
 package com.threemaster;
 
-import java.nio.charset.StandardCharsets;
 import java.util.EnumSet;
 
 import javax.servlet.DispatcherType;
@@ -35,7 +34,7 @@ public class App extends SpringBootServletInitializer implements WebSocketConfig
     }
     
     public static void main(String[] args) {
-        System.out.print(StandardCharsets.UTF_8);
+//        System.out.print(StandardCharsets.UTF_8);
         SpringApplication.run(App.class, args);
     }
     
