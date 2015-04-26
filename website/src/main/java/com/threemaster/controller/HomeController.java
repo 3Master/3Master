@@ -39,45 +39,57 @@ public class HomeController {
     
     @PostConstruct
     public void init(){
-        User user = new User();
-        for(Integer integer = 0; integer < 10; integer ++){
-            user = new User();
-            user.setEmail("test" + integer + "@test.com");
-            user.setPassword(integer + "");
-            user.setSkill1("ae");
-            user.setSkill2("sdag");
-            user.setSkill3("agsd");
-            user.setUsername("a" + integer);
-            userRepository.save(user);
-        }
-        User user0 = userRepository.findByUsername("a0");
-        User user1 = userRepository.findByUsername("a1");
-        User user2 = userRepository.findByUsername("a2");
-        User user3 = userRepository.findByUsername("a3");
-        User user4 = userRepository.findByUsername("a4");
-        Teacher teacher = new Teacher();
-        teacher.setActive(true);
-        teacher.setTeacher(user0);
-        teacher.setStudent(user1);
-        teacherRepository.save(teacher);
+
+        User user1 = new User();
+        user1.setEmail("test1@test.com");
+        user1.setUsername("xierui");
+        user1.setPassword("1");
+        user1.setSkill1("做蛋炒饭");
+        user1.setSkill2("睡觉");
+        user1.setSkill3("调酒");
+        user1.setAvatar("/img/1.jpg");
+        user1 = userRepository.save(user1);
         
-        teacher = new Teacher();
-        teacher.setActive(false);
-        teacher.setTeacher(user0);
-        teacher.setStudent(user2);
-        teacherRepository.save(teacher);
+        User user2 = new User();
+        user2.setEmail("test2@test.com");
+        user2.setUsername("流寒");
+        user2.setPassword("1");
+        user2.setSkill1("剑道");
+        user2.setSkill2("空手道");
+        user2.setSkill3("快速入睡");
+        user2.setAvatar("/img/2.jpg");
+        user2 = userRepository.save(user2);
         
-        teacher = new Teacher();
-        teacher.setActive(true);
-        teacher.setTeacher(user3);
-        teacher.setStudent(user0);
-        teacherRepository.save(teacher);
+        User user3 = new User();
+        user3.setEmail("test3@test.com");
+        user3.setUsername("小白");
+        user3.setPassword("1");
+        user3.setSkill1("篮球");
+        user3.setSkill2("吹竖笛");
+        user3.setSkill3("骑自行车");
+        user3.setAvatar("/img/3.jpg");
+        user3 = userRepository.save(user3);
         
-        teacher = new Teacher();
-        teacher.setActive(false);
-        teacher.setTeacher(user4);
-        teacher.setStudent(user0);
-        teacherRepository.save(teacher);
+        User user4 = new User();
+        user4.setEmail("test4@test.com");
+        user4.setUsername("harttle");
+        user4.setPassword("1");
+        user4.setSkill1("长跑");
+        user4.setSkill2("武术");
+        user4.setSkill3("叫人起床");
+        user4.setAvatar("/img/4.jpg");
+        user4 = userRepository.save(user4);
+        
+        User user5 = new User();
+        user5.setEmail("test5@test.com");
+        user5.setUsername("杰伦");
+        user5.setPassword("1");
+        user5.setSkill1("RAP");
+        user5.setSkill2("写歌");
+        user5.setSkill3("魔术");
+        user5.setAvatar("/img/6.jpg");
+        user5 = userRepository.save(user5);
+
     }
 
 
@@ -115,7 +127,7 @@ public class HomeController {
         List<User> userLisr = Lists.newArrayList();
         for (User user : users) {
             Teacher teacher = teacherRepository.findByTeacherAndStudent(user, current);
-            if(teacher == null){
+            if(teacher == null || current.getId().equals(user.getId())){
                 userLisr.add(user);
             }
         }
@@ -127,6 +139,9 @@ public class HomeController {
             @PageableDefault(value = 15, sort = { "createdTime" }, direction = Sort.Direction.DESC) Pageable pageable,
             Model model, @RequestParam(value="skill", required=false, defaultValue="") String skill){
         User current = HttpUtils.loginRequired(request);
+
+        List<Message> messages = messageRepository.fingByUser(current.getId());
+        model.addAttribute("messageCount", messages.size());
         List<User> users = null;
         if(skill.equals("")){
             users = userRepository.findAll(pageable).getContent();
@@ -136,19 +151,23 @@ public class HomeController {
         model.addAttribute("users",fillTeachers(users, current));
         return "search";
     }
-    
-    private List<User> getTeachers(List<Teacher> teachers){
+
+    private List<User> getTeachers(List<Teacher> teachers, User current){
         List<User> users = Lists.newArrayList();
         for (Teacher teacher : teachers) {
-            users.add(teacher.getTeacher());
+            User user = teacher.getTeacher();
+            user.setMessageCount(messageRepository.findByFromIdAndToIdAndRead(user.getId(), current.getId(), false).size());
+            users.add(user);
         }
         return users;
     }
-    
-    private List<User> getStudents(List<Teacher> teachers){
+
+    private List<User> getStudents(List<Teacher> teachers, User current){
         List<User> users = Lists.newArrayList();
         for (Teacher teacher : teachers) {
-            users.add(teacher.getStudent());
+            User user = teacher.getStudent();
+            user.setMessageCount(messageRepository.findByFromIdAndToIdAndRead(user.getId(), current.getId(), false).size());
+            users.add(user);
         }
         return users;
     }
@@ -156,10 +175,11 @@ public class HomeController {
     @RequestMapping(value = "/message", method=RequestMethod.GET)
     public String message(HttpServletRequest request, Model model){
         User user = HttpUtils.loginRequired(request);
-        List<User> passedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, true));
-        List<User> unpassedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, false));
-        List<User> passedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, true));
-        List<User> unpassedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, false));
+
+        List<User> passedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, true), user);
+        List<User> unpassedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, false), user);
+        List<User> passedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, true), user);
+        List<User> unpassedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, false), user);
         model.addAttribute("passedTeachers", passedTeachers);
         model.addAttribute("unpassedTeachers", unpassedTeachers);
         model.addAttribute("passedStudents", passedStudents);

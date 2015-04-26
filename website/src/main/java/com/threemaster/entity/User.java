@@ -9,22 +9,28 @@ public class User extends AbstractEntity {
 
     @Column(unique = true, nullable = false)
     private String username;
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String password;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(nullable = false)
     private String skill1;
-    @Column(nullable = false)
     private String skill2;
-    @Column(nullable = false)
     private String skill3;
     private String avatar;
     @Transient
     private boolean isApply = false;
     @Transient 
     private  boolean isTeacher = false;
+
+    @Transient
+    private Integer messageCount;
     
+    public Integer getMessageCount() {
+        return messageCount;
+    }
+    public void setMessageCount(Integer messageCount) {
+        this.messageCount = messageCount;
+    }
     public boolean isApply() {
         return isApply;
     }

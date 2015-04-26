@@ -29,7 +29,7 @@
         <li>
           <a href="/message">我的
             <c:if test="${msgCount > 0}">
-              <span class="badge badge-danger">${msgCount}</span>
+              <span class="badge badge-danger">${messageCount}</span>
             </c:if>
           </a>
         </li>

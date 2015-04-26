@@ -49,8 +49,9 @@
             <a class="btn-chat" href="/chat/${user.id}">
                 <i class="fa fa-comment-o"></i>
                 <c:if test="${user.msgCount > 0}">
-                    <span class="badge badge-danger">${user.msgCount}</span>
+                    <span class="badge badge-danger">${user.messageCount}</span>
                 </c:if>
+            <i class="fa fa-comment-o"></i>
             </a>
             <a href="/teachers/${user.id}?_method=DELETE">
             <i class="fa fa-close"></i>
@@ -83,10 +84,14 @@
               <i class="fa fa-comment-o"></i>
             </a>
             <a href="/students/${user.id}?_method=DELETE">
+<<<<<<< HEAD
                 <i class="fa fa-close"></i>
                 <c:if test="${user.msgCount > 0}">
                     <span class="badge badge-danger">${user.msgCount}</span>
                 </c:if>
+=======
+            <i class="fa fa-close"></i>
+>>>>>>> b3877d66d2486dc9e5a2d6af6a90363cf0faeb31
             </a>
           </h4>
         </div>
