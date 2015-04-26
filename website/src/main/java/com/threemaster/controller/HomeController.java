@@ -127,7 +127,7 @@ public class HomeController {
         List<User> userLisr = Lists.newArrayList();
         for (User user : users) {
             Teacher teacher = teacherRepository.findByTeacherAndStudent(user, current);
-            if(teacher == null || current.getId().equals(user.getId())){
+            if(teacher == null && !current.getId().equals(user.getId())){
                 userLisr.add(user);
             }
         }
