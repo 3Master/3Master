@@ -48,7 +48,7 @@
         <h4 class="pull-right">
             <a class="btn-chat" href="/chat/${user.id}">
                 <i class="fa fa-comment-o"></i>
-                <c:if test="${user.msgCount > 0}">
+                <c:if test="${user.messageCount > 0}">
                     <span class="badge badge-danger">${user.messageCount}</span>
                 </c:if>
             <i class="fa fa-comment-o"></i>

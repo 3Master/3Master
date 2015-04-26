@@ -28,7 +28,7 @@
         <li class="active"><a>搜索</a></li>
         <li>
           <a href="/message">我的
-            <c:if test="${msgCount > 0}">
+            <c:if test="${messagCount > 0}">
               <span class="badge badge-danger">${messageCount}</span>
             </c:if>
           </a>
