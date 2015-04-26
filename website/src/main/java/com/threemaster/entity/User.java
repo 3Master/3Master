@@ -24,7 +24,15 @@ public class User extends AbstractEntity {
     private boolean isApply = false;
     @Transient 
     private  boolean isTeacher = false;
+    @Transient
+    private Integer messageCount;
     
+    public Integer getMessageCount() {
+        return messageCount;
+    }
+    public void setMessageCount(Integer messageCount) {
+        this.messageCount = messageCount;
+    }
     public boolean isApply() {
         return isApply;
     }

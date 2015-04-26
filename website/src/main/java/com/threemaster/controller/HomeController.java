@@ -128,6 +128,8 @@ public class HomeController {
             @PageableDefault(value = 15, sort = { "createdTime" }, direction = Sort.Direction.DESC) Pageable pageable,
             Model model, @RequestParam(value="skill", required=false, defaultValue="") String skill){
         User current = HttpUtils.loginRequired(request);
+        List<Message> messages = messageRepository.fingByUser(current.getId());
+        model.addAttribute("messageCount", messages.size());
         List<User> users = null;
         if(skill.equals("")){
             users = userRepository.findAll(pageable).getContent();
@@ -138,18 +140,22 @@ public class HomeController {
         return "search";
     }
     
-    private List<User> getTeachers(List<Teacher> teachers){
+    private List<User> getTeachers(List<Teacher> teachers, User current){
         List<User> users = Lists.newArrayList();
         for (Teacher teacher : teachers) {
-            users.add(teacher.getTeacher());
+            User user = teacher.getTeacher();
+            user.setMessageCount(messageRepository.findByFromIdAndToIdAndRead(user.getId(), current.getId(), false).size());
+            users.add(user);
         }
         return users;
     }
     
-    private List<User> getStudents(List<Teacher> teachers){
+    private List<User> getStudents(List<Teacher> teachers, User current){
         List<User> users = Lists.newArrayList();
         for (Teacher teacher : teachers) {
-            users.add(teacher.getStudent());
+            User user = teacher.getStudent();
+            user.setMessageCount(messageRepository.findByFromIdAndToIdAndRead(user.getId(), current.getId(), false).size());
+            users.add(user);
         }
         return users;
     }
@@ -157,10 +163,10 @@ public class HomeController {
     @RequestMapping(value = "/message", method=RequestMethod.GET)
     public String message(HttpServletRequest request, Model model){
         User user = HttpUtils.loginRequired(request);
-        List<User> passedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, true));
-        List<User> unpassedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, false));
-        List<User> passedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, true));
-        List<User> unpassedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, false));
+        List<User> passedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, true), user);
+        List<User> unpassedTeachers = getTeachers(teacherRepository.findByStudentAndActive(user, false), user);
+        List<User> passedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, true), user);
+        List<User> unpassedStudents = getStudents(teacherRepository.findByTeacherAndActive(user, false), user);
         model.addAttribute("passedTeachers", passedTeachers);
         model.addAttribute("unpassedTeachers", unpassedTeachers);
         model.addAttribute("passedStudents", passedStudents);

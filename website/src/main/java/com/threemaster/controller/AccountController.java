@@ -26,7 +26,7 @@ public class AccountController {
             session.setAttribute("currentUser", user);
             return "redirect:/search";
         } catch (Exception e) {
-            model.addAttribute("errorMsg", "用户已存在！");
+            model.addAttribute("errorMsg", "请确认已存在！");
             return "register";
         }
     }
@@ -46,4 +46,9 @@ public class AccountController {
         session.setAttribute("currentUser", realUser);
         return "redirect:/search";
     }
+    
+//    @RequestMapping(value="/users/update", method=RequestMethod.PUT)
+//    public void updateSkills(@RequestParam String skill1, @RequestParam String skill2, @RequestParam String skill3){
+//        
+//    }
 }

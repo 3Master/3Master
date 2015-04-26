@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: root
+Build-Jdk: 1.7.0_72
+Start-Class: com.threemaster.App
+Created-By: Apache Maven 3.2.3
+Spring-Boot-Version: 1.1.10.RELEASE
+Main-Class: org.springframework.boot.loader.JarLauncher
+Archiver-Version: Plexus Archiver
+
