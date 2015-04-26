@@ -16,7 +16,7 @@ public class User extends AbstractEntity {
     private String skill1;
     private String skill2;
     private String skill3;
-    private String avatar;
+    private String avatar = "/img/default-avatar.jpeg";
     @Transient
     private boolean isApply = false;
     @Transient 
