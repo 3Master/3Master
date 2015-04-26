@@ -34,13 +34,13 @@ public class AccountController {
     }
     
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String login(User user, HttpServletRequest request, Model model){
-        User realUser = userRepository.findByUsername(user.getUsername());
+    public String login(String username, String password, HttpServletRequest request, Model model){
+        User realUser = userRepository.findByUsername(username);
         if(realUser == null){
             model.addAttribute("errorMsg", "用户不存在！");
             return "login";
         }
-        if(!realUser.getPassword().equals(user.getPassword())){
+        if(!realUser.getPassword().equals(password)){
             model.addAttribute("errorMsg", "密码错误！");
             return "login";
         }
