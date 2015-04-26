@@ -9,7 +9,7 @@ public class User extends AbstractEntity {
 
     @Column(unique = true, nullable = false)
     private String username;
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String password;
     @Column(unique = true, nullable = false)
     private String email;
