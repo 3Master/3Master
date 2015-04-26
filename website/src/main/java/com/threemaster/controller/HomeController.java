@@ -40,7 +40,6 @@ public class HomeController {
     @PostConstruct
     public void init(){
         User user1 = new User();
-        user1 = new User();
         user1.setEmail("test1@test.com");
         user1.setUsername("xierui");
         user1.setPassword("1");
@@ -51,7 +50,6 @@ public class HomeController {
         user1 = userRepository.save(user1);
         
         User user2 = new User();
-        user2 = new User();
         user2.setEmail("test2@test.com");
         user2.setUsername("流寒");
         user2.setPassword("1");

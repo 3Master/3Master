@@ -13,11 +13,8 @@ public class User extends AbstractEntity {
     private String password;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(nullable = false)
     private String skill1;
-    @Column(nullable = false)
     private String skill2;
-    @Column(nullable = false)
     private String skill3;
     private String avatar;
     @Transient
