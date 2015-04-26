@@ -13,6 +13,7 @@
 
     <link href="/css/comment.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/search.css" rel="stylesheet">
   </head>
 
   <body>
@@ -25,7 +26,13 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a>搜索</a></li>
-        <li><a href="/message">我的</a></li>
+        <li>
+          <a href="/message">我的
+            <c:if test="${msgCount > 0}">
+              <span class="badge badge-danger">${msgCount}</span>
+            </c:if>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
