@@ -1,11 +1,12 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 
 <head>
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +22,7 @@
 
 <div class="container">
   <img src="/img/logo.ico" id="logo">
-  <form class="form-login" method="post">
+  <form class="form-login" method="post" accept-charset="utf-8">
     <div class=page-header">
       <h2 class="form-login-heading">三人行</h2>
       <p class="desc">三人行，必有<span class="you">你</span>师</p>
