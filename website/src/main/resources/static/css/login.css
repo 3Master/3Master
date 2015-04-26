@@ -1,6 +1,6 @@
 
 body{
-  background: url('/img/bg.jpg');
+  background: url('/img/bg.png');
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
@@ -48,4 +48,11 @@ body{
 }
 .form-login input[type="password"]{
   margin-bottom: 10px;
+}
+
+img#logo{
+  position: fixed;
+  width: 30px;
+  left: 20px;
+  top: 20px;
 }

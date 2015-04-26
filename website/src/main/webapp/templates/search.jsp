@@ -8,7 +8,7 @@
 
     <title>搜索</title>
 
-    <link rel="icon" href="/img/logo.jpg">
+    <link rel="icon" href="/img/logo.ico">
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="/css/comment.css" rel="stylesheet">

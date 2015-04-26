@@ -7,7 +7,7 @@
 
   <title>三人行</title>
 
-  <link rel="icon" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.ico">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <link href="/css/register.css" rel="stylesheet">
@@ -16,6 +16,8 @@
 <body>
 
 <div class="container">
+
+  <img src="/img/logo.ico" id="logo">
 
   <form class="form-register" method="post" action="/register">
 

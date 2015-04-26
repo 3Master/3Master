@@ -10,7 +10,7 @@
 
   <title>消息</title>
 
-  <link rel="icon" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.ico">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/comment.css" rel="stylesheet">
@@ -50,7 +50,7 @@
             <i class="fa fa-comment-o"></i>
             </a>
             <a href="/teachers/${user.id}?_method=DELETE">
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-close"></i>
             </a>
         </h4>
         </div>
@@ -60,7 +60,7 @@
         <div class="comment-list-item">
         <%@include file="user.jsp"%>
         <div class="tag">
-          <span class="label label-default pull-right">已申请</span>
+          <span class="label label-default pull-right">等待通过</span>
         </div>
         </div>
     </c:forEach>
@@ -80,7 +80,7 @@
               <i class="fa fa-comment-o"></i>
             </a>
             <a href="/students/${user.id}?_method=DELETE">
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-close"></i>
             </a>
           </h4>
         </div>

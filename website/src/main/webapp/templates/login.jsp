@@ -11,7 +11,7 @@
 
   <title>登录</title>
 
-  <link rel="icon" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.ico">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <link href="/css/login.css" rel="stylesheet">
@@ -20,6 +20,7 @@
 <body>
 
 <div class="container">
+  <img src="/img/logo.ico" id="logo">
   <form class="form-login" method="post">
     <div class=page-header">
       <h2 class="form-login-heading">三人行</h2>

@@ -10,7 +10,7 @@
 
   <title>消息</title>
 
-  <link rel="icon" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.ico">
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/comment.css" rel="stylesheet">
